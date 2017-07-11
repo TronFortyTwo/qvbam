@@ -14,8 +14,8 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.1 r15371"
-   sodipodi:docname="qvbam-logo.svg">
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="logo.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,17 +25,20 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="400"
-     inkscape:cy="560"
+     inkscape:zoom="0.59"
+     inkscape:cx="-10.664291"
+     inkscape:cy="741.84073"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1408"
-     inkscape:window-height="879"
+     inkscape:window-width="1252"
+     inkscape:window-height="930"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="0"
+     inkscape:snap-bbox="true"
+     inkscape:object-paths="false"
+     inkscape:snap-intersection-paths="false" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -55,48 +58,44 @@
     <rect
        style="fill:#000000;stroke-width:0.26458332"
        id="rect10"
-       width="205.61905"
-       height="139.85118"
-       x="3.0238097"
-       y="67.190475" />
-    <rect
-       style="fill:#00ffff;stroke-width:0.2881532"
-       id="rect12"
-       width="161.01787"
-       height="165.87775"
-       x="45.880444"
-       y="79.69474"
-       transform="matrix(1,0,-0.53775992,0.84309802,0,0)"
-       ry="0" />
+       width="209.73444"
+       height="165.47441"
+       x="1.7784703"
+       y="29.608681" />
     <ellipse
        style="fill:#dd4814;stroke-width:0.19008619"
        id="path14"
-       cx="169.7113"
-       cy="168.86609"
-       rx="10.961309"
-       ry="10.205357" />
+       cx="155.56458"
+       cy="152.13794"
+       rx="14.336138"
+       ry="13.1987" />
     <ellipse
        style="fill:#77216f;stroke-width:0.16859066"
        id="path16"
-       cx="168.57741"
-       cy="128.8006"
-       rx="10.583335"
-       ry="10.205356"
-       inkscape:transform-center-x="-3.7797619"
-       inkscape:transform-center-y="-3.0238095" />
+       cx="154.08157"
+       cy="100.32079"
+       rx="13.84179"
+       ry="13.198699"
+       inkscape:transform-center-x="-4.9434977"
+       inkscape:transform-center-y="-3.9107307" />
     <ellipse
        style="fill:#77216f;stroke-width:0.16733719"
        id="path20"
-       cx="143.25299"
-       cy="149.58929"
-       rx="10.205357"
-       ry="10.583334" />
+       cx="120.96013"
+       cy="127.20705"
+       rx="13.347437"
+       ry="13.687542" />
     <ellipse
        style="fill:#dd4814;stroke-width:0.1456133"
        id="path22"
-       cx="192.76785"
-       cy="149.2113"
-       rx="10.583334"
-       ry="10.205357" />
+       cx="185.71991"
+       cy="126.71819"
+       rx="13.841789"
+       ry="13.1987" />
+    <path
+       style="fill:#00ffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.28222221px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 162.15819,29.128059 34.440678,194.15631 2.8700566,195.11299 1.913371,28.649718 Z"
+       id="path3404"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>
