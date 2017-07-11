@@ -26,19 +26,26 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.59"
-     inkscape:cx="-10.664291"
-     inkscape:cy="741.84073"
+     inkscape:cx="263.91198"
+     inkscape:cy="591.84073"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1252"
-     inkscape:window-height="930"
+     inkscape:window-width="1072"
+     inkscape:window-height="1833"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:snap-bbox="true"
      inkscape:object-paths="false"
-     inkscape:snap-intersection-paths="false" />
+     inkscape:snap-intersection-paths="false"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="-310.92279,340.1017"
+       orientation="1,0"
+       id="guide3396" />
+  </sodipodi:namedview>
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -58,44 +65,49 @@
     <rect
        style="fill:#000000;stroke-width:0.26458332"
        id="rect10"
-       width="209.73444"
-       height="165.47441"
-       x="1.7784703"
-       y="29.608681" />
+       width="220.62344"
+       height="195.99748"
+       x="-10.17175"
+       y="58.110241"
+       transform="matrix(1,0,7.0952546e-4,0.99999975,0,0)" />
     <ellipse
        style="fill:#dd4814;stroke-width:0.19008619"
        id="path14"
-       cx="155.56458"
-       cy="152.13794"
-       rx="14.336138"
-       ry="13.1987" />
+       cx="160.71703"
+       cy="218.56432"
+       rx="15.080443"
+       ry="13.975443"
+       transform="matrix(1,0,-0.0483437,0.99883076,0,0)" />
     <ellipse
        style="fill:#77216f;stroke-width:0.16859066"
        id="path16"
-       cx="154.08157"
-       cy="100.32079"
-       rx="13.84179"
-       ry="13.198699"
-       inkscape:transform-center-x="-4.9434977"
-       inkscape:transform-center-y="-3.9107307" />
+       cx="159.13243"
+       cy="157.60942"
+       rx="14.560431"
+       ry="13.497677"
+       inkscape:transform-center-x="-5.400351"
+       inkscape:transform-center-y="-3.9943024"
+       transform="matrix(1,0,-0.05005487,0.99874647,0,0)" />
     <ellipse
        style="fill:#77216f;stroke-width:0.16733719"
        id="path20"
-       cx="120.96013"
-       cy="127.20705"
-       rx="13.347437"
-       ry="13.687542" />
+       cx="125.00221"
+       cy="190.23679"
+       rx="14.040411"
+       ry="13.360642"
+       transform="matrix(1,0,-0.05244118,0.99862401,0,0)" />
     <ellipse
        style="fill:#dd4814;stroke-width:0.1456133"
        id="path22"
-       cx="185.71991"
-       cy="126.71819"
-       rx="13.841789"
-       ry="13.1987" />
+       cx="192.62912"
+       cy="188.91527"
+       rx="14.560429"
+       ry="13.497679"
+       transform="matrix(1,0,-0.05005487,0.99874647,0,0)" />
     <path
-       style="fill:#00ffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.28222221px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 162.15819,29.128059 34.440678,194.15631 2.8700566,195.11299 1.913371,28.649718 Z"
-       id="path3404"
+       style="fill:#19aeff;fill-rule:evenodd;stroke:#000000;stroke-width:0.26927307px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 163.30953,61.214933 C 50.041524,253.45716 50.906165,256.34803 50.906165,256.34803 L -10.051043,255.3844 -9.1864037,57.360453 165.03881,54.951401 Z"
+       id="path3398"
        inkscape:connector-curvature="0" />
   </g>
 </svg>
