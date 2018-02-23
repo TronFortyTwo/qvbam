@@ -81,7 +81,7 @@ Page {
             onTouchUpdated: {
                 for (var i in buttonBackground.lastKeyStatus) {
                     var pressed = false;
-					var buttonKey = buttonBackground.buttonKeys[i];
+                    var buttonKey = buttonBackground.buttonKeys[i];
                     for (var j in touchPoints) {
                         if (i < 6) {
                             if (buttonBackground.buttonsPositions[i][5] == "left") {
@@ -226,7 +226,7 @@ Page {
             back: ToolbarButton {
                 action: Action {
                     text: "Close"
-                    iconSource: "./img/close.svg"
+                    iconName: "close"
                     onTriggered: {
                         pageStack.pop();
                         iwindow.vOnFileClose();
@@ -236,7 +236,7 @@ Page {
             ToolbarButton {
                 action: Action {
                     text: "Settings"
-                    iconSource: "./img/settings.svg"
+                    iconName: "settings"
                     onTriggered: {
                         pageStack.push(Qt.resolvedUrl("SettingPage.qml"));
                     }
@@ -246,7 +246,7 @@ Page {
             ToolbarButton {
                 action: Action {
                     text: "Save Slot"
-                    iconSource: "./img/save.svg"
+              	    iconName: "save"
                     onTriggered: {
                         slotAction = "save";
                         PopupUtils.open(slotSheet)
@@ -256,7 +256,7 @@ Page {
             ToolbarButton {
                 action: Action {
                     text: "Load Slot"
-                    iconSource: "./img/keyboard-caps.svg"
+                    iconName: "keyboard-caps-disabled"
                     onTriggered: {
                         slotAction = "load";
                         PopupUtils.open(slotSheet)
