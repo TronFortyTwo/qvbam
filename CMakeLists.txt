@@ -2,6 +2,9 @@
 PROJECT(VBA-M C CXX)
 #set( CMAKE_VERBOSE_MAKEFILE on )
 
+# Set some flag to speed things up
+add_compile_options(-O3)
+
 cmake_minimum_required( VERSION 2.6.0 )
 if( COMMAND cmake_policy )
     cmake_policy( SET CMP0003 NEW )
@@ -10,7 +13,7 @@ endif( COMMAND cmake_policy )
 SET( CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeScripts )
 
 option( ENABLE_SDL "Build the SDL port" ON )
-option( ENABLE_GTK "Build the GTK+ GUI" ON )
+option( ENABLE_GTK "Build the GTK+ GUI" OFF )
 option( ENABLE_WX "Build the wxWidgets port" OFF )
 option( ENABLE_DEBUGGER "Enable the debugger" ON )
 option( ENABLE_NLS "Enable translations" ON )
