@@ -69,7 +69,7 @@ Component {
         }
         Timer {
             id: closeTimer
-            interval: 1000
+            interval: 10
             repeat: false
             onTriggered: {
                 mainView.backgroundColor = picker.oldColor
