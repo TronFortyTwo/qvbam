@@ -4,8 +4,8 @@ import Ubuntu.Components 1.3
 
 MainView {
     id: mainView
-    width: units.gu(48)
-    height: units.gu(70)
+    width: units.gu(100)
+    height: units.gu(100)
     backgroundColor: UbuntuColors.porcelain
     automaticOrientation: true
     applicationName: "emanuelesorce.qvbam"
