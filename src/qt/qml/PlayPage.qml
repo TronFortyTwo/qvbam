@@ -169,19 +169,7 @@ Page {
             }
         }
     }
-
-    //MouseArea {
-    //    id: toolbarMask
-    //    anchors {
-    //        top: tools.bottom
-    //        left: parent.left
-    //        right: parent.right
-    //         bottom: parent.bottom
-    //    }
-    //    enabled: tools.opened
-    //    onClicked: tools.close()
-    //}
-
+    
     header: PageHeader {
         id: tools
         
@@ -198,11 +186,10 @@ Page {
 
         trailingActionBar.actions: [
             Action {
-                text: "Save Slot"
-                iconName: "save"
+                text: "Settings"
+                iconName: "settings"
                 onTriggered: {
-                   slotAction = "save";
-                   PopupUtils.open(slotSheet)
+                    pageStack.push(Qt.resolvedUrl("SettingPage.qml"));
                 }
             },
             Action {
@@ -214,10 +201,11 @@ Page {
                 }
             },
             Action {
-                text: "Settings"
-                iconName: "settings"
+                text: "Save Slot"
+                iconName: "save"
                 onTriggered: {
-                    pageStack.push(Qt.resolvedUrl("SettingPage.qml"));
+                   slotAction = "save";
+                   PopupUtils.open(slotSheet)
                 }
             }
         ]
