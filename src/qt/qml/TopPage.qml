@@ -2,11 +2,12 @@ import QtQuick 2.4
 import Ubuntu.Components 1.3
 import Ubuntu.Components.ListItems 1.3 as ListItem
 import Ubuntu.Components.Popups 1.3
+
 Tabs {
     id: tabs
     Tab {
         id: romTab
-        title: "Load Roms"
+        title: i18n.tr("Load Roms")
         page: Page {
             head.actions: [
                 Action {

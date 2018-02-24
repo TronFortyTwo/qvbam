@@ -58,11 +58,8 @@ Page {
         height: units.gu(28)
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        color: showPad ? "#4E2865" : "transparent"
+        color: showPad ? "white" : "transparent"
         opacity: showPad ? 1.0 : 0.5
-        //[startx, starty, endx, endy, key]
-        //position in absolute value
-        //keyname, x,y,width, height left or right, key, image
         property var buttonsPositions: [
             ["L", 2.25, 21.25, 11, 5, "left", Qt.Key_A, "./img/LButton.png"],
             ["R", 2.25, 21.25, 11, 5, "right", Qt.Key_S, "./img/RButton.png"],
@@ -74,7 +71,7 @@ Page {
         ]
         property var directRatio: 0.31;
         property var lastKeyStatus: [false, false, false, false, false, false, false, false, false, false]
-		property var buttonKeys: [Qt.Key_A, Qt.Key_S, Qt.Key_Z, Qt.Key_X, Qt.Key_Return, Qt.Key_Backspace, Qt.Key_Up, Qt.Key_Left, Qt.Key_Down, Qt.Key_Right]
+       	property var buttonKeys: [Qt.Key_A, Qt.Key_S, Qt.Key_Z, Qt.Key_X, Qt.Key_Return, Qt.Key_Backspace, Qt.Key_Up, Qt.Key_Left, Qt.Key_Down, Qt.Key_Right]
 
         MultiPointTouchArea {
             anchors.fill: parent
@@ -173,97 +170,57 @@ Page {
         }
     }
 
-    MouseArea {
-        id: toolbarMask
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-            bottom: tools.top
-        }
-        enabled: tools.opened
-        onClicked: tools.close()
-    }
+    //MouseArea {
+    //    id: toolbarMask
+    //    anchors {
+    //        top: tools.bottom
+    //        left: parent.left
+    //        right: parent.right
+    //         bottom: parent.bottom
+    //    }
+    //    enabled: tools.opened
+    //    onClicked: tools.close()
+    //}
 
-    Icon {
-        name: "contextual-menu"
-        opacity: 0.5
-        width: units.gu(5)
-        height: width
-        x: units.gu(2)
-        y: units.gu(2)
-        MouseArea {
-            anchors.fill: parent
-            onClicked: tools.open()
-        }
-    }
-
-    Panel {
+    header: PageHeader {
         id: tools
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-        height: units.gu(8)
-        Component.onCompleted: {
-            tools.open();
-            closeToolbarTimer.start();
-        }
-        Rectangle {
-            anchors.fill: parent
-            color: "white"
-        }
+        
+        leadingActionBar.actions: [
+            Action {
+                text: "Quit"
+                iconName: "close"
+                onTriggered: {
+                    iwindow.vOnFileClose();
+                    pageStack.pop();
+                }
+            }
+        ]
 
-        Timer {
-            id: closeToolbarTimer
-            interval: 2000
-            repeat: false
-            onTriggered: tools.close()
-        }
-
-        ToolbarItems {
-            back: ToolbarButton {
-                action: Action {
-                    text: "Close"
-                    iconName: "close"
-                    onTriggered: {
-                        pageStack.pop();
-                        iwindow.vOnFileClose();
-                    }
+        trailingActionBar.actions: [
+            Action {
+                text: "Save Slot"
+                iconName: "save"
+                onTriggered: {
+                   slotAction = "save";
+                   PopupUtils.open(slotSheet)
+                }
+            },
+            Action {
+                text: "Load Slot"
+                iconName: "keyboard-caps-disabled"
+                onTriggered: {
+                    slotAction = "load";
+                    PopupUtils.open(slotSheet)
+                }
+            },
+            Action {
+                text: "Settings"
+                iconName: "settings"
+                onTriggered: {
+                    pageStack.push(Qt.resolvedUrl("SettingPage.qml"));
                 }
             }
-            ToolbarButton {
-                action: Action {
-                    text: "Settings"
-                    iconName: "settings"
-                    onTriggered: {
-                        pageStack.push(Qt.resolvedUrl("SettingPage.qml"));
-                    }
-                }
-            }
-
-            ToolbarButton {
-                action: Action {
-                    text: "Save Slot"
-              	    iconName: "save"
-                    onTriggered: {
-                        slotAction = "save";
-                        PopupUtils.open(slotSheet)
-                    }
-                }
-            }
-            ToolbarButton {
-                action: Action {
-                    text: "Load Slot"
-                    iconName: "keyboard-caps-disabled"
-                    onTriggered: {
-                        slotAction = "load";
-                        PopupUtils.open(slotSheet)
-                    }
-                }
-            }
-        }
+        ]
     }
     Component {
         id: slotSheet
