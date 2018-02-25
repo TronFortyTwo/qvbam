@@ -24,6 +24,7 @@ MainView {
         id: playPage
         visible: false
     }
+
     focus: true
     Keys.onPressed: {
         iwindow.on_key_press_event(event.key);

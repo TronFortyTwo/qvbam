@@ -16,7 +16,7 @@ Page {
     Rectangle {
         id: screenContainer
         anchors {
-            top: parent.top
+            top: tools.bottom
             bottom: showPad ? buttonBackground.top : parent.bottom
         }
         width: parent.width
