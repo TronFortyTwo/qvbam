@@ -1,11 +1,20 @@
+cmake_minimum_required( VERSION 3.1 )
+
 # The project's name is VBA-M it uses C and C++ code
 PROJECT(VBA-M C CXX)
+
 #set( CMAKE_VERBOSE_MAKEFILE on )
 
 # Set some flag to speed things up
 add_compile_options(-O3)
+add_compile_options(-fpermissive)
 
-cmake_minimum_required( VERSION 2.6.0 )
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
 if( COMMAND cmake_policy )
     cmake_policy( SET CMP0003 NEW )
     cmake_policy( SET CMP0005 OLD )

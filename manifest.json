@@ -1,7 +1,7 @@
 {
     "name": "emanuelesorce.qvbam",
     "description": "gba emulator",
-    "framework": "ubuntu-sdk-15.04.5-qml",
+    "framework": "ubuntu-sdk-16.04",
     "architecture": "armhf",
     "title": "QVBAM",
     "hooks": {
@@ -10,6 +10,6 @@
             "desktop": "qvbam.desktop"
         }
     },
-    "version": "0.2.5",
+    "version": "0.2.6",
     "maintainer": "Emanuele Sorce <emanuele.sorce@hotmail.com>"
 }

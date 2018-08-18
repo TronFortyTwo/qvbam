@@ -1,5 +1,5 @@
 #!/bin/bash
-export MAKEFLAGS=-j$(($(grep -c ^processor /proc/cpuinfo) - 0))
+export MAKEFLAGS=-j3 #$(($(grep -c ^processor /proc/cpuinfo) - 1))
 export CC="clang"
 export CXX="g++"
 
@@ -14,5 +14,5 @@ fi
 mkdir build
 cd build
 cmake .. -DSDL_PATH=`pwd`/../lib/SDL-1.2.15/
-make
+make -j3
 
