@@ -19,7 +19,9 @@ if( COMMAND cmake_policy )
     cmake_policy( SET CMP0003 NEW )
     cmake_policy( SET CMP0005 OLD )
 endif( COMMAND cmake_policy )
-SET( CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeScripts )
+
+#SET( CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeScripts )
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 option( ENABLE_SDL "Build the SDL port" ON )
 option( ENABLE_GTK "Build the GTK+ GUI" OFF )
@@ -60,7 +62,7 @@ endif( NOT ENABLE_DEBUGGER AND ENABLE_SDL )
 # Set the version number with -DVERSION=X.X.X-uber
 IF( NOT VERSION )
     SET( VERSION "1.8.0-SVN" )
-   
+
     IF(EXISTS "${CMAKE_SOURCE_DIR}/.svn")
         FIND_PACKAGE(Subversion)
         IF(SUBVERSION_FOUND)
@@ -84,7 +86,13 @@ endif( ENABLE_ASM_SCALERS )
 # Look for some dependencies using CMake scripts
 FIND_PACKAGE ( ZLIB REQUIRED )
 FIND_PACKAGE ( PNG REQUIRED )
-FIND_PACKAGE ( OpenGL REQUIRED )
+
+if(CMAKE_SYSTEM_PROCESSOR MATCHES "^arm")
+    find_package(GLESv2 REQUIRED)
+else()
+    find_package(OpenGL REQUIRED)
+endif()
+
 #FIND_PACKAGE ( SDL REQUIRED )
 
 if( ENABLE_LINK )
