@@ -10,7 +10,7 @@ vbam website: http://vba-m.com/
 
 Run build.sh to build the app.
 
-You need to have cmake and autoconf to successfully build. libasound-dev and libpulse-dev are needed if you want to compile with audio support.
+You need to have cmake and autoconf to successfully build. libasound-dev and libpulse-dev are needed for audio support.
 
 to build the ubuntu touch click package run pkg-click.sh after building.
 
