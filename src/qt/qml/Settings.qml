@@ -1,32 +1,31 @@
 import QtQuick 2.4
-import QtQuick.LocalStorage 2.0
-import "js/db.js" as DB
+import Qt.labs.settings 1.0
 
 Item {
-	property bool enableSound: true;
-	property bool configShowSpeed: false;
-	property bool configShowFrameSkip: false;
-	property int displayScale: 0; //0 for automatic
-    
-	Component.onCompleted: load();
-    
+	id: settingsItem
+
+	property int displayScale: settings.displayScale;
+	property bool enableSound: settings.enableSound;
+	property bool configShowSpeed: settings.configShowSpeed;
+	property bool configShowFrameSkip: settings.configShowFrameSkip;
+
 	onEnableSoundChanged: {
 		iwindow.config.mute = !enableSound;
-		save();
 	}
 	onDisplayScaleChanged: save();
-	onConfigShowSpeedChanged: save();
-	onConfigShowFrameSkipChanged: save();
-
-	function load() {
-		var settings = DB.getSettings();
-		enableSound = settings.enablesound;
-		configShowSpeed = settings.showspeed;
-		configShowFrameSkip = settings.showframeskip;
-		displayScale = settings.scale;
-	}
 	
 	function save() {
-		DB.storeSettings(enableSound, configShowSpeed, configShowFrameSkip, displayScale);
+		settings.enableSound = settingsItem.enableSound;
+		settings.configShowSpeed = settingsItem.configShowSpeed;
+		settings.configShowFrameSkip = settingsItem.configShowFrameSkip;
+		settings.displayScale = settingsItem.displayScale;
+	}
+
+	Settings {
+		id: settings
+		property bool enableSound: true;
+	        property bool configShowSpeed: false;
+	        property bool configShowFrameSkip: false;
+	        property int displayScale: 0;
 	}
 }
