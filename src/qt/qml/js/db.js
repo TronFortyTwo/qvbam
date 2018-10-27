@@ -38,17 +38,17 @@ function storeSettings(enablesound, showspeed, showframeskip, scale) {
 
 // get Settings
 function getSettings() {
-	
+
 	var enablesound;
 	var showspeed;
 	var showframeskip;
 	var scale;
-	
-    var db = openDB();
-    
+
+	var db = openDB();
+
 	db.transaction(function(tx) {
 		var rs = tx.executeSql('SELECT * FROM settings');
-		
+
 		if(rs.rows.length > 0)
 		{
 			enablesound = rs.rows.item(0).enablesound;
@@ -65,7 +65,7 @@ function getSettings() {
 			showframeskip = false;
 			scale = 0; // 0 is auto
 		}
-    });
+	});
 
 	return {
 		enablesound: enablesound,
