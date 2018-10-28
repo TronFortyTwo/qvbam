@@ -42,6 +42,7 @@ Page {
             }
             visible: settings.configShowSpeed
             text: "Speed: " + iwindow.speed + "%"
+			color: "white"
         }
         Label {
             anchors {
@@ -50,6 +51,7 @@ Page {
             }
             visible: settings.configShowFrameSkip
             text: "Frame Skip: " + iwindow.frameSkip
+            color: "white"
         }
     }
     Rectangle {
