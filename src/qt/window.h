@@ -13,7 +13,7 @@
 #include "../gba/GBA.h"
 #include "../gb/gbGlobals.h"
 #include "../sdl/inputSDL.h"
-#include <SDL_keysym.h>
+#include <SDL_keyboard.h>
 #include <pwd.h>
 #include "Config.h"
 #include "QGameSlot.h"

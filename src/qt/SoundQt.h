@@ -6,7 +6,8 @@
 #include <QThread>
 #include <QMutex>
 #include <QSemaphore>
-#include "../common/RingBuffer.h"
+#include "../common/Types.h"
+#include "../common/ringbuffer.h"
 class SoundBuffer : public QIODevice {
 public:
     SoundBuffer(int samples);
@@ -15,7 +16,7 @@ public:
 private:
     const float _delay = 0.11f;
 
-    RingBuffer<u16> _rbuf;
+    RingBuffer<uint16_t> _rbuf;
 };
 
 class SoundQt : public QObject, public SoundDriver {
@@ -25,7 +26,7 @@ public:
     virtual void pause();
     virtual void reset();
     virtual void resume();
-    virtual void write(u16 * finalWave, int length);
+    virtual void write(uint16_t * finalWave, int length);
 
 //public slots:
 //    void  handleStateChanged(QAudio::State);

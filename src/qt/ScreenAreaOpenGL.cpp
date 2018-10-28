@@ -6,7 +6,7 @@
 #include "CustomQQuickView.h"
 #define NOISE_SIZE 160
 extern CustomQQuickView * view;
-extern u8 * pix;
+extern Uint8 * pix;
 extern Window * w;
 Squircle::Squircle()
 {
@@ -19,7 +19,7 @@ QSGNode * Squircle::updatePaintNode(QSGNode * oldnode, UpdatePaintNodeData *){
         node = new QSGSimpleTextureNode();
         node->setRect(boundingRect());
     }
-    QImage image(pix, 241, 160, QImage::Format_RGB32);
+    QImage image(pix, 241, NOISE_SIZE, QImage::Format_RGB32);
     QSGTexture * t = view->createTextureFromImage(image);
     node->setTexture(t);
     return node;

@@ -24,21 +24,27 @@
 
 ;%define FAR_POINTER
 
-
-
-          BITS 32
-%ifdef __DJGPP__
-          GLOBAL __2xSaILine
-          GLOBAL __2xSaISuperEagleLine
-                  GLOBAL __2xSaISuper2xSaILine
-          GLOBAL _Init_2xSaIMMX
-%else
-          GLOBAL _2xSaILine
-          GLOBAL _2xSaISuperEagleLine
-                  GLOBAL _2xSaISuper2xSaILine
-          GLOBAL Init_2xSaIMMX
+%ifidn __OUTPUT_FORMAT__,elf
+section .note.GNU-stack noalloc noexec nowrite progbits
 %endif
-          SECTION .text ALIGN = 32
+%ifidn __OUTPUT_FORMAT__,elf32
+section .note.GNU-stack noalloc noexec nowrite progbits
+%endif
+%ifidn __OUTPUT_FORMAT__,elf64
+section .note.GNU-stack noalloc noexec nowrite progbits
+%endif
+
+BITS 32
+GLOBAL __2xSaILine
+GLOBAL __2xSaISuperEagleLine
+GLOBAL __2xSaISuper2xSaILine
+GLOBAL _Init_2xSaIMMX
+
+GLOBAL _2xSaILine
+GLOBAL _2xSaISuperEagleLine
+GLOBAL _2xSaISuper2xSaILine
+GLOBAL Init_2xSaIMMX
+SECTION .text
 
 %ifdef FAR_POINTER
 ;EXTERN_C void _2xSaILine (uint8 *srcPtr, uint32 srcPitch, uint32 width,
@@ -86,11 +92,8 @@ colorA3   equ 4
 
 
 
-%ifdef __DJGPP__
 __2xSaISuper2xSaILine:
-%else
 _2xSaISuper2xSaILine:
-%endif
 ; Store some stuff
          push ebp
          mov ebp, esp
@@ -825,11 +828,8 @@ _2xSaISuper2xSaILine:
 
 
 
-%ifdef __DJGPP__
 __2xSaISuperEagleLine:
-%else
 _2xSaISuperEagleLine:
-%endif
 ; Store some stuff
          push ebp
          mov ebp, esp
@@ -1405,11 +1405,8 @@ colorN   equ 0
 colorO   equ 2
 colorP   equ 4
 
-%ifdef __DJGPP__
 __2xSaILine:
-%else
 _2xSaILine:
-%endif
 ; Store some stuff
          push ebp
          mov ebp, esp
@@ -1996,11 +1993,8 @@ _2xSaILine:
 ;-------------------------------------------------------------------------
 ;-------------------------------------------------------------------------
 
-%ifdef __DJGPP__
 _Init_2xSaIMMX:
-%else
 Init_2xSaIMMX:
-%endif
 ; Store some stuff
          push ebp
          mov ebp, esp
@@ -2074,7 +2068,7 @@ end3:
 ;-------------------------------------------------------------------------
 ;-------------------------------------------------------------------------
 
-        SECTION .data ALIGN = 32
+        SECTION .data
 ;Some constants
 colorMask     dd 0xF7DEF7DE,0xF7DEF7DE
 lowPixelMask  dd 0x08210821,0x08210821
@@ -2091,7 +2085,7 @@ TRUE          dd 0xffffffff,0xffffffff
 ONE           dd 0x00010001,0x00010001
 
 
-        SECTION .bss ALIGN = 32
+        SECTION .bss
 ACPixel       resb 8
 Mask1         resb 8
 Mask2         resb 8

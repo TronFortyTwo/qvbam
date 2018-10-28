@@ -7,9 +7,9 @@ int  systemColorDepth;
 int  systemVerbose;
 int  systemSaveUpdateCounter;
 int  systemFrameSkip;
-u32  systemColorMap32[0x10000];
-u16  systemColorMap16[0x10000];
-u16  systemGbPalette[24];
+Uint32  systemColorMap32[0x10000];
+Uint16  systemColorMap16[0x10000];
+Uint16  systemGbPalette[24];
 
 
 int  emulating;
@@ -30,7 +30,7 @@ void systemMessage(int _iId, const char * _csFormat, ...)
     //  va_end(args);
 }
 
-void debuggerBreakOnWrite(u32 address, u32 oldvalue, u32 value, int size, int t)
+void debuggerBreakOnWrite(Uint32 address, Uint32 oldvalue, Uint32 value, int size, int t)
 {
 }
 
@@ -61,7 +61,7 @@ int systemGetSensorY()
     return 0;
 }
 
-void debuggerOutput(const char *, u32)
+void debuggerOutput(const char *, Uint32)
 {
 }
 
@@ -69,7 +69,7 @@ void debuggerSignal(int, int)
 {
 }
 
-void (*dbgOutput)(const char *, u32) = debuggerOutput;
+void (*dbgOutput)(const char *, Uint32) = debuggerOutput;
 void (*dbgSignal)(int, int) = debuggerSignal;
 
 bool systemCanChangeSoundQuality()
@@ -95,7 +95,7 @@ void systemOnSoundShutdown()
 //char * emptySound = 0;
 //int emptySoundLength = 0;
 //extern SoundDriver * soundDriver;
-void systemOnWriteDataToSoundBuffer(const u16 * finalWave, int length)
+void systemOnWriteDataToSoundBuffer(const Uint16 * finalWave, int length)
 {
 //    if (emptySoundLength != 0 && emptySoundLength != length) {
 //        delete emptySound;
@@ -117,12 +117,12 @@ bool systemReadJoypads()
     return true;
 }
 
-u32 systemReadJoypad(int joy)
+Uint32 systemReadJoypad(int joy)
 {
     return inputReadJoypad(joy);
 }
 
-u32 systemGetClock()
+Uint32 systemGetClock()
 {
     return QTime::currentTime().msecsSinceStartOfDay();
 }

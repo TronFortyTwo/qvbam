@@ -3,27 +3,27 @@
 
 // For compilers that support precompilation, includes <wx/wx.h>.
 #include <wx/wxprec.h>
- 
+
 #ifdef __BORLANDC__
-    #pragma hdrstop
+#pragma hdrstop
 #endif
 
 // for all others, include the necessary headers (this file is usually all you
 // need because it includes almost all "standard" wxWidgets headers)
 #ifndef WX_PRECOMP
-    #include <wx/wx.h>
+#include <wx/wx.h>
 #endif
 
 // The following are not pulled in by wx.h
 
 // for some reason, mingw32 wx.h doesn't pull in listctrl by default
+#include <wx/config.h>
+#include <wx/display.h>
+#include <wx/fileconf.h>
 #include <wx/listctrl.h>
+#include <wx/stdpaths.h>
 #include <wx/treectrl.h>
 #include <wx/xrc/xmlres.h>
-#include <wx/config.h>
-#include <wx/fileconf.h>
-#include <wx/display.h>
-#include <wx/stdpaths.h>
 // filehistory.h is separate only in 2.9+
 #include <wx/docview.h>
 
@@ -41,7 +41,7 @@
 #endif
 
 // compatibility with MacOSX 10.5
-#if !wxCHECK_VERSION(2,8,8)
+#if !wxCHECK_VERSION(2, 8, 8)
 #define AddFileWithMimeType(a, b, c, m) AddFile(a, b, c)
 #define GetItemLabel GetText
 #define SetItemLabel SetText
@@ -51,7 +51,7 @@
 
 // compatibility with wx-2.9
 // The only reason I use wxTRANSLATE at all is to get wxT as a side effect.
-#if wxCHECK_VERSION(2,9,0)
+#if wxCHECK_VERSION(2, 9, 0)
 #undef wxTRANSLATE
 #define wxTRANSLATE wxT
 #endif
@@ -65,27 +65,34 @@
 
 #include "wx/keyedit.h"
 
-static inline void DoSetAccel(wxMenuItem *mi, wxAcceleratorEntry *acc)
+static inline void DoSetAccel(wxMenuItem* mi, wxAcceleratorEntry* acc)
 {
     wxString lab = mi->GetItemLabel();
     size_t tab = lab.find(wxT('\t'));
+
     // following short circuit returns are to avoid UI update on no change
-    if(tab == wxString::npos && !acc)
-	return;
+    if (tab == wxString::npos && !acc)
+        return;
+
     wxString accs;
-    if(acc)
-	// actually, use keyedit's ToString(), as it is more reliable
-	// and doesn't generate wx assertions
-	// accs = acc->ToString();
-	accs = wxKeyTextCtrl::ToString(acc->GetFlags(), acc->GetKeyCode());
-    if(tab != wxString::npos && accs == lab.substr(tab + 1))
-	return;
-    if(tab != wxString::npos)
-	lab.resize(tab);
-    if(acc) {
-	lab.append(wxT('\t'));
-	lab.append(accs);
+
+    if (acc)
+        // actually, use keyedit's ToString(), as it is more reliable
+        // and doesn't generate wx assertions
+        // accs = acc->ToString();
+        accs = wxKeyTextCtrl::ToString(acc->GetFlags(), acc->GetKeyCode());
+
+    if (tab != wxString::npos && accs == lab.substr(tab + 1))
+        return;
+
+    if (tab != wxString::npos)
+        lab.resize(tab);
+
+    if (acc) {
+        lab.append(wxT('\t'));
+        lab.append(accs);
     }
+
     mi->SetItemLabel(lab);
 }
 
@@ -102,7 +109,7 @@ static inline void DoSetAccel(wxMenuItem *mi, wxAcceleratorEntry *acc)
 // I bypassed wx's stuff to use real dynamic_cast as well, so get a better
 // compiler.
 #undef XRCCTRL
-#define XRCCTRL_I(win, id, type) (dynamic_cast<type *>((win).FindWindow(id)))
+#define XRCCTRL_I(win, id, type) (dynamic_cast<type*>((win).FindWindow(id)))
 #define XRCCTRL(win, id, type) XRCCTRL_I(win, XRCID(id), type)
 #define XRCCTRL_D(win, id, type) XRCCTRL_I(win, XRCID_D(id), type)
 

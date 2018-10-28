@@ -4,7 +4,7 @@
 
 extern int RGB_LOW_BITS_MASK;
 
-int Init_2xSaI(u32);
+int Init_2xSaI(Uint32);
 
 Window::Window() :
     m_iGBAScreenWidth (240),
@@ -315,7 +315,7 @@ void Window::vDrawScreen()
 bool Window::on_key_press_event(Qt::Key key) {
     SDL_Event event;
     event.type = SDL_KEYDOWN;
-    event.key.keysym.sym = (SDLKey)key;
+    event.key.keysym.sym = (SDL_Keycode)key;
     inputProcessSDLEvent(event);
 
     return true;
@@ -324,7 +324,7 @@ bool Window::on_key_press_event(Qt::Key key) {
 bool Window::on_key_release_event(Qt::Key key) {
     SDL_Event event;
     event.type = SDL_KEYUP;
-    event.key.keysym.sym = (SDLKey)key;
+    event.key.keysym.sym = (SDL_Keycode)key;
     inputProcessSDLEvent(event);
     return true;
 }

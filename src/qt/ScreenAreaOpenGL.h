@@ -5,6 +5,9 @@
 #include <QtGui/QOpenGLShaderProgram>
 #include <QSGSimpleRectNode>
 #include <QSGSimpleTextureNode>
+
+#include "../common/Types.h"
+
 class Squircle : public QQuickItem
 {
     Q_OBJECT

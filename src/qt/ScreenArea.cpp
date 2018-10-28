@@ -1,6 +1,6 @@
 #include "ScreenArea.h"
 
-extern u8 *pix;
+extern Uint8 *pix;
 extern Window * w;
 
 ScreenArea::ScreenArea() {

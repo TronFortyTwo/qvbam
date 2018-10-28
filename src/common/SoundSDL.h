@@ -1,5 +1,5 @@
 // VisualBoyAdvance - Nintendo Gameboy/GameboyAdvance (TM) emulator.
-// Copyright (C) 2008 VBA-M development team
+// Copyright (C) 2015 VBA-M development team
 
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,37 +18,46 @@
 #ifndef __VBA_SOUND_SDL_H__
 #define __VBA_SOUND_SDL_H__
 
+#include "ringbuffer.h"
 #include "SoundDriver.h"
-#include "RingBuffer.h"
 
-#include <SDL.h>
+#include "SDL.h"
 
-class SoundSDL: public SoundDriver
-{
+class SoundSDL : public SoundDriver {
 public:
-	SoundSDL();
-	virtual ~SoundSDL();
+        SoundSDL();
+        virtual ~SoundSDL();
 
-	virtual bool init(long sampleRate);
-	virtual void pause();
-	virtual void reset();
-	virtual void resume();
-	virtual void write(u16 * finalWave, int length);
+        virtual bool init(long sampleRate);
+        virtual void pause();
+        virtual void reset();
+        virtual void resume();
+        virtual void write(uint16_t *finalWave, int length);
+        virtual void setThrottle(unsigned short throttle_);
+
+protected:
+        static void soundCallback(void* data, uint8_t* stream, int length);
+        virtual void read(uint16_t* stream, int length);
+        virtual bool should_wait();
+        virtual std::size_t buffer_size();
+        virtual void deinit();
 
 private:
-	RingBuffer<u16> _rbuf;
+        RingBuffer<uint16_t> samples_buf;
 
-	SDL_mutex * _mutex;
-	SDL_sem *_semBufferFull;
-	SDL_sem *_semBufferEmpty;
+        SDL_AudioDeviceID sound_device = -1;
 
-	bool _initialized;
+        SDL_mutex* mutex;
+        SDL_sem* data_available;
+        SDL_sem* data_read;
+        SDL_AudioSpec audio_spec;
 
-	// Defines what delay in seconds we keep in the sound buffer
-	static const float _delay;
+        unsigned short current_rate;
 
-	static void soundCallback(void *data, u8 *stream, int length);
-	virtual void read(u16 * stream, int length);
+        bool initialized = false;
+
+        // Defines what delay in seconds we keep in the sound buffer
+        static const double buftime;
 };
 
 #endif // __VBA_SOUND_SDL_H__
