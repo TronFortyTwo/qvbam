@@ -21,11 +21,6 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 #Output all binaries at top level
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
 
-option(ENABLE_SDL "Build the SDL port" OFF)
-option(ENABLE_WX "Build the wxWidgets port" ON)
-option(ENABLE_DEBUGGER "Enable the debugger" ON)
-option(ENABLE_NLS "Enable translations" ON)
-
 option(VBAM_STATIC "Try to link all libraries statically" OFF)
 
 # ------------------------------------------------------------------------------
@@ -113,9 +108,6 @@ option(ENABLE_ASM_SCALERS "Enable x86 ASM graphic filters" ${ASM_SCALERS_DEFAULT
 if(ENABLE_ASM_SCALERS)
     option(ENABLE_MMX "Enable MMX" ${MMX_DEFAULT})
 endif()
-
-option(ENABLE_LINK "Enable GBA linking functionality" ON)
-option(ENABLE_LIRC "Enable LIRC support" OFF)
 
 # currently completely broken
 set(FFMPEG_DEFAULT OFF)
