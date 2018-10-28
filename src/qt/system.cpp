@@ -61,6 +61,21 @@ int systemGetSensorY()
     return 0;
 }
 
+int systemGetSensorZ()
+{
+	return 0;
+}
+
+uint8_t systemGetSensorDarkness()
+{
+	// total darkness (including daylight on rainy days)
+	return 0xE8;
+}
+
+void systemCartridgeRumble(bool)
+{
+}
+
 void debuggerOutput(const char *, Uint32)
 {
 }
