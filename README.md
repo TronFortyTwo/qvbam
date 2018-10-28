@@ -8,11 +8,13 @@ vbam website: http://vba-m.com/
 
 ## Build
 
-Run build.sh to build the app.
+Run ./build.sh to build the app.
+
+If you have just changed the QML code, update it in the build directory without triggering a complete rebuild with ./build_qml.sh
 
 You need to have cmake and autoconf to successfully build. libasound-dev and libpulse-dev are needed for audio support.
 
-to build the ubuntu touch click package run pkg-click.sh after building.
+to build the ubuntu touch click package run ./pkg-click.sh after building.
 
 ## License
 
