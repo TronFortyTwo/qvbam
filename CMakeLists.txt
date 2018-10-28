@@ -859,6 +859,7 @@ IF(ENABLE_QT)
         fex
         #"${SDL_PATH}/build/.libs/libSDL.a"
         #"${SDL_PATH}/build/.libs/libSDLmain.a"
+        "-lSDL2"
         "-ldl"
         #"-lts"
         "-pthread"
