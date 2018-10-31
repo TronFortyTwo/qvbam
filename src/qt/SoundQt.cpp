@@ -9,14 +9,14 @@ SoundBuffer::SoundBuffer(int samples) {
 }
 
 qint64 SoundBuffer::readData(char *data, qint64 length) {
-    uint16_t * stream = (uint16_t *)data;
+    Uint16 * stream = (Uint16 *)data;
     int readLength = std::min(static_cast<std::size_t>(length) / 2, _rbuf.used());
     _rbuf.read(stream, readLength);
     return readLength * 2;
 }
 
 qint64 SoundBuffer::writeData(const char* data, qint64 length) {
-    uint16_t *finalWave = (uint16_t *)data;
+    Uint16 *finalWave = (Uint16 *)data;
     int writeLength = std::min(static_cast<std::size_t>(length) / 2, _rbuf.avail());
     _rbuf.write(finalWave, writeLength);
     return writeLength * 2;
@@ -54,6 +54,6 @@ void SoundQt::resume() {
     audio->resume();
 }
 
-void SoundQt::write(uint16_t * finalWave, int length) {
+void SoundQt::write(Uint16 * finalWave, int length) {
    buffer->write((char *)finalWave, length);
 }

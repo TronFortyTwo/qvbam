@@ -151,9 +151,9 @@ void systemFrame()
 {
 }
 
-void system10Frames(int _iRate)
+void system10Frames(int rate)
 {
-    GUI()->vComputeFrameskip(_iRate);
+	GUI()->vComputeFrameskip(rate);
 //    missingSound += systemFrameSkip;
 }
 

@@ -44,7 +44,7 @@ Tabs {
         }
     }
 
-    ContentPickerDialog {
-        id: contentPickerDialog
-    }
+    //ContentPickerDialog {
+    //    id: contentPickerDialog
+    //}
 }

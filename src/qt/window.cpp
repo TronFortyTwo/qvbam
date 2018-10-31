@@ -10,7 +10,8 @@ Window::Window() :
     m_iGBAScreenWidth (240),
     m_iGBAScreenHeight(160),
     m_eCartridge(CartridgeNone),
-    m_bPaused(false) {
+    m_bPaused(false)
+{
     m_config = new Config();
     for (int i = 0; i < 10; i++)
         m_qGameSlotList.push_back(new QGameSlot());
@@ -466,68 +467,60 @@ QQmlListProperty<QGameSlot> Window::gameSlot() {
     return QQmlListProperty<QGameSlot>(this, m_qGameSlotList);
 }
 
-void Window::vComputeFrameskip(int _iRate) {
-    static QDateTime uiLastTime;
-    static int iFrameskipAdjust = 0;
+void Window::vComputeFrameskip(int rate) {
+	
+	int fs = frameSkip();
+	
+	if (fs < 0) {
+		// I don't know why this algorithm isn't in common somewhere
+		// as is, I copied it from SDL (This has been again copyed from WX)
+		static uint32_t prevclock = 0;
+		static int speedadj = 0;
+		uint32_t t = systemGetClock();
 
-    QDateTime uiTime = QDateTime::currentDateTime();
+		if (!paused() && prevclock && (t - prevclock) != 10000 / rate) {
+			int speed = (t == prevclock) ? 100 * 10000 / rate - (t - prevclock) : 100;
 
-    if (m_bWasEmulating)
-    {
-        if (m_bAutoFrameskip)
-        {
-            int uiDiff = uiTime.toMSecsSinceEpoch() - uiLastTime.toMSecsSinceEpoch();
-            const int iWantedSpeed = 100;
-            int iSpeed = iWantedSpeed;
+			// why 98??
+			if (speed >= 98)
+				speedadj++;
+			else if (speed < 80)
+				speedadj -= (90 - speed) / 5;
+			else
+				speedadj--;
 
-            if (uiDiff != 0)
-            {
-                iSpeed = (1000000 / _iRate) / (uiDiff);
-            }
+			if (speedadj >= 3) {
+				speedadj = 0;
 
-            if (iSpeed >= iWantedSpeed - 2)
-            {
-                iFrameskipAdjust++;
-                if (iFrameskipAdjust >= 3)
-                {
-                    iFrameskipAdjust = 0;
-                    if (systemFrameSkip > 0)
-                    {
-                        systemFrameSkip--;
-                        emit frameSkipChanged();
-                    }
-                }
-            }
-            else
-            {
-                if (iSpeed < iWantedSpeed - 20)
-                {
-                    iFrameskipAdjust -= ((iWantedSpeed - 10) - iSpeed) / 5;
-                }
-                else if (systemFrameSkip < 9)
-                {
-                    iFrameskipAdjust--;
-                }
+				if (systemFrameSkip > 0)
+				{
+					systemFrameSkip--;
+					emit frameSkipChanged();
+				}
+			} else if (speedadj <= -2) {
+				speedadj += 2;
 
-                if (iFrameskipAdjust <= -4)
-                {
-                    iFrameskipAdjust = 0;
-                    if (systemFrameSkip < 9)
-                    {
-                        systemFrameSkip++;
-                        emit frameSkipChanged();
-                    }
-                }
-            }
-        }
+				if (systemFrameSkip < 9)
+				{
+					systemFrameSkip++;
+					emit frameSkipChanged();
+				}
+			}
+		}
+
+		prevclock = t;
+		setPaused(false);
     }
-    else
-    {
-        m_bWasEmulating = true;
-    }
-    //        qDebug() << "systemFrameSkip is " << systemFrameSkip << endl;
-
-    uiLastTime = uiTime;
+    //if (gopts.rewind_interval) {
+    //    if (!panel->rewind_time)
+    //        panel->rewind_time = gopts.rewind_interval * 6;
+    //    else if (!--panel->rewind_time)
+    //        panel->do_rewind = true;
+    //}
+    //if (--systemSaveUpdateCounter == SYSTEM_SAVE_NOT_UPDATED)
+    //    panel->SaveBattery();
+    //else if (systemSaveUpdateCounter < SYSTEM_SAVE_NOT_UPDATED)
+    //    systemSaveUpdateCounter = SYSTEM_SAVE_NOT_UPDATED;
 }
 
 void Window::vApplyConfigFrameskip() {

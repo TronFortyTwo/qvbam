@@ -39,9 +39,6 @@ option( ENABLE_QT "Enable the Qt GUI" ON)
 if(ENABLE_QT)
     set(ENABLE_GTK OFF)
     set(ENABLE_SDL OFF)
-	#if(NOT SDL_PATH)
-    #    message( SEND_ERROR "SDL static build path be given to build staticly" )
-	#endif(NOT SDL_PATH)
 endif(ENABLE_QT)
 # ------------------------------------------------------------------------------
 
@@ -849,8 +846,6 @@ IF(ENABLE_QT)
         qvbam
         vbamcore
         fex
-        #"${SDL_PATH}/build/.libs/libSDL.a"
-        #"${SDL_PATH}/build/.libs/libSDLmain.a"
         "-lSDL2"
         "-ldl"
         #"-lts"

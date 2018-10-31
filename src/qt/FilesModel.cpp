@@ -1,6 +1,6 @@
 #include "FilesModel.h"
 
-#define ROM_PATH "/.local/share/emanuelesorce.qvbam/roms"
+#define ROM_PATH "/.local/share/emanuelesorce.qvbam/roms/"
 
 QStringList FilesModel::files(){
     QDir qdir(QDir::homePath() + ROM_PATH);
@@ -27,7 +27,7 @@ QStringList FilesModel::files(){
 void FilesModel::importFiles(QString fullPath) {
     QFile file(fullPath);
     QFileInfo fileInfo(file.fileName());
-    QString target = QDir::homePath() + ROM_PATH + "/" + fileInfo.fileName();
+    QString target = QDir::homePath() + ROM_PATH + fileInfo.fileName();
     if (file.exists()) {
         file.copy(target);
     }
@@ -35,7 +35,7 @@ void FilesModel::importFiles(QString fullPath) {
 }
 
 void FilesModel::removeFile(QString fileName) {
-    QFile f(QDir::homePath() + ROM_PATH + "/" + fileName);
+    QFile f(QDir::homePath() + ROM_PATH + fileName);
     qDebug() << "remove " << fileName << " " << f.exists();
     if (f.exists()) {
         f.remove();
