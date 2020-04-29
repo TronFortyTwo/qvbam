@@ -1,16 +1,23 @@
 {
-	"template": "custom",
+	"template": "cmake",
+	"build_args": "-DSDL_PATH=${SRC_DIR}/libs/sdl/SDL-1.2.15/",
 	"dependencies_target": [
 		"libpulse-dev",
-		"libasound-dev"
-	],
-	"dependencies_host": [
+		"libasound-dev",
 		"qtdeclarative5-dev",
 		"zlib1g-dev",
-		"libpng-dev"
+		"libpng-dev",
+		"libgl-dev"
 	],
-	"build": "cd ${SRC_DIR} && ./build.sh && ./pkg-click.sh",
-	"scripts": {
-		"fast": "cd ${SRC_DIR} && ./build_qml.sh && ./pkg-click.sh"
+	"libraries": {
+		"sdl": {
+			"env_vars": {
+				"CC": "gcc",
+				"CXX": "g++"
+			},
+			"template": "custom",
+			"prebuild": "cd ${SRC_DIR} && if [ ! -d SDL-1.2.15 ]; then tar xf SDL-1.2.15.tar.gz && cd SDL-1.2.15 && patch -p 1 -f < ../SDL1.patch; fi",
+			"build": "cd ${SRC_DIR}/SDL-1.2.15 && ./autogen.sh && ./configure --enable-input-tslib=off --host=${ARCH_TRIPLET} CXXFLAGS='-fpermissive -Ofast -std=gnu++11' CFLAGS='-Ofast' && make -j2"
+		}
 	}
 }

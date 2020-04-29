@@ -1,3 +1,4 @@
 build/
 emanuelesorce.qvbam*
-lib/
+libs/sdl/SDL-1.2.15/
+.clickable/

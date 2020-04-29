@@ -50,7 +50,7 @@ if(ENABLE_QT)
     set(ENABLE_GTK OFF)
     set(ENABLE_SDL OFF)
 	if(NOT SDL_PATH)
-        message( SEND_ERROR "SDL static build path be given to build staticly" )
+            message( SEND_ERROR "SDL static build path be given to build staticly" )
 	endif(NOT SDL_PATH)
 endif(ENABLE_QT)
 
@@ -507,10 +507,8 @@ ENDIF( ENABLE_GTK )
 IF(ENABLE_QT)
     set(CMAKE_INCLUDE_CURRENT_DIR ON)
     set(CMAKE_AUTOMOC ON)
-    find_package(Qt5Core)
-    find_package(Qt5Quick)
-    find_package(Qt5Gui)
-    find_package(Qt5Multimedia)
+    find_package(Qt5Core REQUIRED Qt5Qml Qt5Quick Qt5Xml Qt5Gui Qt5Network)
+
     add_executable(
         qvbam
         ${SRC_QT}
