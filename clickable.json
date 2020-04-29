@@ -1,6 +1,7 @@
 {
-	"template": "cmake",
-	"build_args": "-DSDL_PATH=${ROOT}/build/${ARCH_TRIPLET}/sdl/SDL-1.2.15/",
+	"clickable_minimum_required": "6.12.2",
+	"builder": "cmake",
+	"build_args": "-DSDL_PATH=${SDL_LIB_BUILD_DIR}/SDL-1.2.15/",
 	"default": "build install launch logs",
 	"dependencies_target": [
 		"libpulse-dev",
@@ -15,9 +16,9 @@
 			"env_vars": {
 				"CXXFLAGS": "-fpermissive -0fast -std=gnu++11"
 			},
-			"template": "custom",
-			"prebuild": "if [ ! -d ${ROOT}/build/${ARCH_TRIPLET}/${NAME}/SDL-1.2.15 ]; then tar xf ${SRC_DIR}/SDL-1.2.15.tar.gz -C ${ROOT}/build/${ARCH_TRIPLET}/${NAME} && cd ${ROOT}/build/${ARCH_TRIPLET}/${NAME}/SDL-1.2.15 && patch -p 1 -f < ${SRC_DIR}/SDL1.patch; fi",
-			"build": "cd ${ROOT}/build/${ARCH_TRIPLET}/${NAME}/SDL-1.2.15 && ./autogen.sh && ./configure --enable-input-tslib=off --build=x86_64-linux-gnu --host=${ARCH_TRIPLET} && make -j2"
+			"builder": "custom",
+			"prebuild": "if [ ! -d ${BUILD_DIR}/SDL-1.2.15 ]; then tar xf ${SRC_DIR}/SDL-1.2.15.tar.gz -C ${BUILD_DIR} && cd ${BUILD_DIR}/SDL-1.2.15 && patch -p 1 -f < ${SRC_DIR}/SDL1.patch; fi",
+			"build": "cd ${BUILD_DIR}/SDL-1.2.15 && ./autogen.sh && ./configure --enable-input-tslib=off --build=x86_64-linux-gnu --host=${ARCH_TRIPLET} --prefix=${INSTALL_DIR} && make -j2 && make install"
 		}
 	}
 }
