@@ -23,6 +23,8 @@ endif( COMMAND cmake_policy )
 #SET( CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeScripts )
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
+option( CLICK_MODE "prepare Ubuntu Touch package" on)
+
 option( ENABLE_SDL "Build the SDL port" ON )
 option( ENABLE_GTK "Build the GTK+ GUI" OFF )
 option( ENABLE_WX "Build the wxWidgets port" OFF )
@@ -554,3 +556,14 @@ if( ENABLE_GTK OR ENABLE_WX )
         add_subdirectory(po)
     endif( ENABLE_NLS )
 endif( ENABLE_GTK OR ENABLE_WX )
+
+# Prepare the click package
+if(CLICK_MODE)
+	set(DATA_DIR /)
+	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/manifest.json DESTINATION ${DATA_DIR})
+	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/logo.svg DESTINATION ${DATA_DIR})
+	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/qvbam.desktop DESTINATION ${DATA_DIR})
+	install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/qvbam.json DESTINATION ${DATA_DIR})
+	install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/qt/qml DESTINATION ${DATA_DIR})
+	install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/qvbam DESTINATION ${DATA_DIR})
+endif(CLICK_MODE)

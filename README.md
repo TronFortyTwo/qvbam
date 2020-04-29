@@ -10,23 +10,15 @@ vbam website: http://vba-m.com/
 
 ### With Clickable (recommended)
 
-To build everything:
+To build the sdl library:
 
-```$ clickable build```
+```$ clickable build-libs```
 
-To do a fast repackage updating only the QML code
+To build the app
 
-```$ clickable fast```
+```$ clickable```
 
-### Without Clickable
-
-Run ./build.sh to build the app.
-
-If you have just changed the QML code, update it in the build directory without triggering a complete rebuild with ./build_qml.sh
-
-You need to have cmake and autoconf to successfully build. libasound-dev and libpulse-dev are needed for audio support.
-
-to build the ubuntu touch click package run ./pkg-click.sh after building.
+Consider use option --dirty, since rebuilding everything takes quite a bit of time
 
 ## License
 
