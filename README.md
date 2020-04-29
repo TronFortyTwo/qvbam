@@ -8,6 +8,18 @@ vbam website: http://vba-m.com/
 
 ## Build
 
+### With Clickable (recommended)
+
+To build everything:
+
+```$ clickable build```
+
+To do a fast repackage updating only the QML code
+
+```$ clickable fast```
+
+### Without Clickable
+
 Run ./build.sh to build the app.
 
 If you have just changed the QML code, update it in the build directory without triggering a complete rebuild with ./build_qml.sh
