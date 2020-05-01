@@ -18,7 +18,7 @@
 			},
 			"builder": "custom",
 			"prebuild": "if [ ! -d ${BUILD_DIR}/SDL-1.2.15 ]; then tar xf ${SRC_DIR}/SDL-1.2.15.tar.gz -C ${BUILD_DIR} && cd ${BUILD_DIR}/SDL-1.2.15 && patch -p 1 -f < ${SRC_DIR}/SDL1.patch; fi",
-			"build": "cd ${BUILD_DIR}/SDL-1.2.15 && ./autogen.sh && ./configure --enable-input-tslib=off --build=x86_64-linux-gnu --host=${ARCH_TRIPLET} --prefix=${INSTALL_DIR} && make -j2 && make install"
+			"build": "cd ${BUILD_DIR}/SDL-1.2.15 && ./autogen.sh && ./configure --enable-input-tslib=off --disable-shared --host=arm-linux-gnueabihf --prefix=${INSTALL_DIR} && make -j2 && make install"
 		}
 	}
 }
