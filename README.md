@@ -12,13 +12,13 @@ vbam website: http://vba-m.com/
 
 To build the sdl library:
 
-```$ clickable build-libs```
+```$ clickable build --libs --arch arm64```
 
 To build the app
 
-```$ clickable```
+```$ clickable build -a arm64```
 
-Consider use option --dirty, since rebuilding everything takes quite a bit of time
+Or you can use arch armhf, amd64, etc.
 
 ## License
 
@@ -27,3 +27,7 @@ See source code for details
 ## Contact
 
 Emanuele Sorce <emanuele.sorce@hotmail.com>
+
+## Updated
+
+Updated to focal by alaskalinuxuser <alaskalinuxuser@fastmail.com>
