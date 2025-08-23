@@ -4,5 +4,5 @@
         "audio",
         "content_exchange"
     ],
-    "policy_version": 16.04
+    "policy_version": "@APPARMOR_POLICY@"
 }
